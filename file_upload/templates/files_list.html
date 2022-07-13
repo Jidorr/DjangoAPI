@@ -1,0 +1,49 @@
+<!DOCTYPE htaml>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>List of files</title>  
+</head>
+<body>
+    <header class="site-header">  
+        <div class="site-identity">  
+         <h1><a href={% url 'upload_file' %}>Upload new file</a></h1>  
+        </div>   
+    </header> 
+<img src="http://nightdeveloper.net/wp-content/uploads/2016/02/django-logo-negative.png" alt="DJANGO" width="400" height="200">
+<h2>Files</h2>
+{% if files %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>File location</th>
+            <th>Download</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for file in files %}
+            <tr>
+                <td>{{ file.name }}</td>
+                <td>{{ file.file }}</td>
+                <td>
+                    <a href="{{ file.file.url }}" class="btn btn-primary btn-sm">Download file</a>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'delete_file' file.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        {% else %}
+    </tbody>
+</table>
+<a>No files</a>
+{% endif %}
+</body>
+            

@@ -1,0 +1,22 @@
+<!DOCTYPE htaml>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>File upload</title>  
+</head>
+<body>
+    <header class="site-header">  
+        <div class="site-identity">  
+         <h1><a href={% url 'files_list' %}>Back to all files</a></h1>  
+        </div>   
+    </header>  
+    <img src="http://nightdeveloper.net/wp-content/uploads/2016/02/django-logo-negative.png" alt="DJANGO" width="400" height="200">
+<h2>Upload your csv file for processing:</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary">Upload csv file</button>
+</form>
+</body>
