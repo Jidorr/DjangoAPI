@@ -18,5 +18,5 @@ renamed so that there is no conflict.
 
 Expected csv format:
 <div align="center">
-    <img src="csv_format.png?raw=true">
+    <img src="csv_example.PNG?raw=true">
 </div>
